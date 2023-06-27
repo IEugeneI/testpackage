@@ -1,0 +1,23 @@
+{
+  "name": "abss/sending_subscribe_mails",
+  "description": "Package for sending emails to subscribers",
+  "type": "library",
+  "version": "1.0",
+  "autoload": {
+    "psr-4": {
+      "Abss\\Sending_subscribe_mails\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "eugene",
+      "email": "boichenko@abss.at"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+
+}
