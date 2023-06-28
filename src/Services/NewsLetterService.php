@@ -20,14 +20,13 @@ class NewsLetterService
     //Campaigns
 
     /**
-     * @param $client_id
      * @return array
      */
-    public static function getCampaigns($client_id=null): array
+    public static function getCampaigns(): array
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getCampaigns($client_id);
+            return call_user_func(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getCampaigns"));
         }
         return self::error("Pls set right provider");
     }
@@ -40,7 +39,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::createCampaign($attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "createCampaign"),
+                array($attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -54,7 +54,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::updateCampaign($campaign_id, $attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "updateCampaign"),
+                array($campaign_id,$attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -67,7 +68,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::deleteCampaign($campaign_id);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "deleteCampaign"),
+                array($campaign_id));
         }
         return self::error("Pls set right provider");
     }
@@ -80,7 +82,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::sendCampaign($campaign_id);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "sendCampaign"),
+                array($campaign_id));
         }
         return self::error("Pls set right provider");
     }
@@ -93,7 +96,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getStatusForCampaign($campaign_id);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getStatusForCampaign"),
+                array($campaign_id));
         }
         return self::error("Pls set right provider");
     }
@@ -107,7 +111,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::setHTMLForCampaign($campaign_id,$attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "setHTMLForCampaign"),
+                array($campaign_id,$attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -121,7 +126,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::setTextForCampaign($campaign_id,$attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "setTextForCampaign"),
+                array($campaign_id,$attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -134,14 +140,13 @@ class NewsLetterService
     //Lists
 
     /**
-     * @param $client_id
      * @return array
      */
-    public static function getLists($client_id=null): array
+    public static function getLists(): array
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getLists($client_id);
+            return call_user_func(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getLists"));
         }
         return self::error("Pls set right provider");
     }
@@ -154,7 +159,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::createLists($attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "createLists"),
+                array($attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -167,7 +173,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getSegments($attribute);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getSegments"),
+                array($attribute));
         }
         return self::error("Pls set right provider");
     }
@@ -181,7 +188,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::createSegment($list_id,$attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "createSegment"),
+                array($list_id, $attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -202,7 +210,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getSubscribersForList($list_id);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getSubscribersForList"),
+                array($list_id));
         }
         return self::error("Pls set right provider");
     }
@@ -216,7 +225,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::addSubscriberToList($list_id,$attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "addSubscriberToList"),
+                array($list_id,$attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -230,7 +240,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::removeSubscriberFromList($list_id,$subscriber_hash);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "removeSubscriberFromList"),
+                array($list_id,$subscriber_hash));
         }
         return self::error("Pls set right provider");
     }
@@ -243,7 +254,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::subscriberValidateEmailAddress($email);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "subscriberValidateEmailAddress"),
+                array($email));
         }
         return self::error("Pls set right provider");
     }
@@ -256,7 +268,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::subscriberIsOnList($list_id);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "subscriberIsOnList"),
+                array($list_id));
         }
         return self::error("Pls set right provider");
     }
@@ -269,7 +282,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getListsForSubscriber($attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getListsForSubscriber"),
+                array($attributes));
         }
         return self::error("Pls set right provider");
     }
@@ -282,7 +296,8 @@ class NewsLetterService
     {
         if(in_array(config('subscribe_mail.provider'),self::ProvidersArray)){
             $provider=config('subscribe_mail.provider').'Service';
-            return $provider::getSubscriberStatusForList($attributes);
+            return call_user_func_array(array('\\Abss\\Sending_subscribe_mails\\Services\\'.$provider, "getSubscriberStatusForList"),
+                array($attributes));
         }
         return self::error("Pls set right provider");
     }

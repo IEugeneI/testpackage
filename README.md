@@ -13,6 +13,13 @@
 
     composer require abss/sending_subscribe_mail
 
+    Added to your config/app.php file next string in providers array:
+        \Abss\Sending_subscribe_mails\Providers\NewsletterProvider::class
+    Then run command:
+    php artisan vendor:publish --provider="Abss\Sending_subscribe_mails\Providers\NewsletterProvider" 
+
+    After that setup config file subscribe_mail.php
+
 ### Usage
     1)Setup type provider in confing file(Mailchimp,Brevo,CampaignMonitor)
     2)Added api keys in config file( mailchimp,brevo OR campaignmonitor) , related

@@ -13,7 +13,7 @@ class NewsletterProvider extends ServiceProvider
     public function boot():void
     {
         $this->publishes([
-            __DIR__.'../config/subscribe_mail.php' => config_path('subscribe_mail.php'),
+            __DIR__.'/config/subscribe_mail.php' => config_path('subscribe_mail.php'),
         ]);
     }
 }
