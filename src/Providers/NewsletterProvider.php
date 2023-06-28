@@ -1,6 +1,5 @@
 <?php
-
-namespace Fhsinchy\Inspire\Providers;
+namespace Abss\Sending_subscribe_mails\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
